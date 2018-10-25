@@ -67,6 +67,17 @@ class Admin extends CI_Controller {
 		$this->load->view('common/footer-assets'); 
 	}
 
+	public function stock_maintenance()
+	{	
+		$this->load->model('admin/m_stock_maintenance');
+		$data['title'] = 'Stocks Maintenance'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/admin-header', $data); 
+		$this->load->view('admin/maintenance/stock-maintenance', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
+
 	#****************************************#
 	#
 	#
@@ -75,9 +86,9 @@ class Admin extends CI_Controller {
 	#
 	#****************************************#
 
-	public function test(){
+	public function sales_invoice(){
 
-		$this->load->view('admin/reports/test');
+		$this->load->view('admin/reports/sales_invoice');
 
 		// Get output html
 		$html = $this->output->get_output();
@@ -95,7 +106,7 @@ class Admin extends CI_Controller {
 		$this->dompdf->render();
 
 		// Output the PDF; 0 = preview; 1 = download
-		$this->dompdf->stream('Test.pdf', array("Attachment" => 0));
+		$this->dompdf->stream('Sales Invoice.pdf', array("Attachment" => 0));
 	}
 
 }

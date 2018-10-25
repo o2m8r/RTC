@@ -3,6 +3,7 @@
     <a href="#" class="brand-logo"> RTC</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a class="active" href="stock-maintenance" onclick="javascript:window.location.href='stock-maintenance';">Stocks</a></li>
       <li><a class="active" href="orders" onclick="javascript:window.location.href='orders';">Orders</a></li>
       <li><a class="active" href="qoutations" onclick="javascript:window.location.href='qoutations';">Qoutations</a></li>
       <li><a class="active" href="collections" onclick="javascript:window.location.href='collections';">Collections</a></li>
