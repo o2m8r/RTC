@@ -33,6 +33,40 @@ class Admin extends CI_Controller {
 		$this->load->view('common/footer-assets'); 
 	}
 
+	##########################
+	#	MAIN TRANSACTION
+	##########################
+
+	public function orders()
+	{	
+		$data['title'] = 'Orders'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/admin-header', $data); 
+		$this->load->view('admin/orders', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
+
+	public function qoutations()
+	{	
+		$data['title'] = 'Qoutations'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/admin-header', $data); 
+		$this->load->view('admin/qoutations', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
+
+	public function collections()
+	{	
+		$data['title'] = 'Collections'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/admin-header', $data); 
+		$this->load->view('admin/collections', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
+
 	#****************************************#
 	#
 	#
