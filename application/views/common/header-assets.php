@@ -23,6 +23,8 @@
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/materialize/js/materialize.min.js"></script>
 
+  <!-- CSS3 ANIMATE CSS -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css3-animate-it-master/css/animations.css">
 </head>
 
 <body>

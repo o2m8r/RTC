@@ -1,43 +1,175 @@
-<div class="carousel carousel-slider center">
-  <div class="carousel-fixed-item center">
-    <a class="btn waves-effect white grey-text darken-text-2">button</a>
-  </div>
-  <div class="carousel-item red white-text" href="#one!">
-    <h2>First Panel</h2>
-    <p class="white-text">This is your first panel</p>
-  </div>
-  <div class="carousel-item amber white-text" href="#two!">
-    <h2>Second Panel</h2>
-    <p class="white-text">This is your second panel</p>
-  </div>
-  <div class="carousel-item green white-text" href="#three!">
-    <h2>Third Panel</h2>
-    <p class="white-text">This is your third panel</p>
-  </div>
-  <div class="carousel-item blue white-text" href="#four!">
-    <h2>Fourth Panel</h2>
-    <p class="white-text">This is your fourth panel</p>
+<style>
+  .justify{
+    text-align: justify;
+  }
+
+  .cursor{
+    cursor: pointer;
+  }
+
+  .default-pic{
+    height: 425px;
+    width: 423px;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col m6 s12">
+      <img class="responsive-img" src="assets/images/lab3.png" alt="">
+    </div>
+
+    <div class="col m6 s12">
+      <h5>
+        RTC Laboratory Services and Supply House
+      </h5>
+
+      <p class="justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus repellat fugit natus veniam corrupti distinctio eius, debitis id sit, magni. At id obcaecati perferendis, impedit ab, nemo quibusdam accusamus inventore consectetur molestias rem accusantium aperiam cum alias facere, ullam veritatis et repellat commodi, eius tempora doloremque. Quas possimus tenetur, modi omnis, consequatur, pariatur eos eum illum doloribus, neque ab et? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae provident mollitia ipsa saepe quidem sint, harum. Suscipit animi distinctio numquam.
+      </p>
+    </div>
   </div>
 </div>
 
-<div>
-  <hr>
+<div class="container section scrollspy" id="c" style="padding-top: 50px;">
+<h4>
+  <strong>
+    TOOLS
+  </strong>
+</h4>
+  <div class="row">
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card responsive-img">
+        <div class="card-image">
+          <img class="default-pic" src="assets/images/tools/funnel.jpg">
+          <span class="card-title black-text">FUNNEL</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
 
-  <center id="c" class="section scrollspy">
-    <i class="material-icons" style="font-size: 50pt;">contact_phone</i>
-    <h3>CONTACT</h3>
-    <br><br><br><br><br>
-  </center>
-  
-  <hr>
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/tools/beaker.jpg">
+          <span class="card-title black-text">BEAKER</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
 
-  <center id="a" class="section scrollspy">
-    <i class="material-icons" style="font-size: 50pt;">info</i>
-    <h3>ABOUT</h3>
-    <br><br><br><br><br>
-  </center>
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/tools/test_tube.jpg">
+          <span class="card-title black-text">TEST TUBE</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <hr>
+
+<h4>
+  <strong>
+    CHEMICALS
+  </strong>
+</h4>
+  <div class="row">
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card responsive-img">
+        <div class="card-image">
+          <img class="default-pic" src="assets/images/chemicals/acetone.jpg">
+          <span class="card-title black-text">ACETONE</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/chemicals/petroleum_ether.jpg">
+          <span class="card-title black-text">PETROLEUM ETHER</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/chemicals/toluene.jpg">
+          <span class="card-title black-text">TOULENE</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<h4>
+  <strong>
+    EQUIPMENTS
+  </strong>
+</h4>
+  <div class="row">
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card responsive-img">
+        <div class="card-image">
+          <img class="default-pic" src="assets/images/equipment/bunsen_burner.jpg">
+          <span class="card-title black-text">BUNSEN BURNER</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/equipment/barometer.png">
+          <span class="card-title black-text">BAROMETER</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 materialboxed cursor">
+      <div class="card">
+        <div class="card-image responsive-img">
+          <img class="default-pic" src="assets/images/equipment/microscope.jpg">
+          <span class="card-title black-text">MICROSOPE</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- START LOGIN MODAL -->
@@ -48,12 +180,12 @@
       <?php echo form_open('c_authentication/login', array('class' => 'col s12')); ?>
 
         <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s12 col m12">
           <i class="material-icons prefix">account_circle</i>
           <input id="icon_prefix" type="email" class="validate" required>
           <label for="icon_prefix">Email</label>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s12 col m12">
           <i class="material-icons prefix">lock</i>
           <input id="icon_telephone" type="password" class="validate" required>
           <label for="icon_telephone">Password</label>

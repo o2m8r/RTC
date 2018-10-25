@@ -1,20 +1,21 @@
-<nav class="nav-extended">
-  <div class="nav-wrapper container">
-    <a href="#" class="brand-logo">RTC</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-          <li class="tab"><a class="active" href="#homepage" onclick="javascript:window.location.href='#';"> Homepage </a></li>
-          <li class="tab"><a href="#contact" onclick="javascript:window.location.href='#c';">Contact</a></li>
-          <li class="tab"><a href="#about" onclick="javascript:window.location.href='#a';">About</a></li>
-          <li class="tab"><a href="#loginModal" class="waves-effect waves-light modal-trigger">Login</a></li>
-          <li class="tab"><a href="#inquireModal" class="waves-effect waves-light modal-trigger">Inquire</a></li>
-        </ul>
-      </div>
-    </ul>
-  </div>
-</nav>
+<div class="navbar-fixed">
+  <nav class="nav-extended red">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">RTC</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <div class="nav-content">
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="active" href="#homepage" onclick="javascript:window.location.href='#';"> HOME </a></li>
+            <li class="tab"><a href="#contact" onclick="javascript:window.location.href='#c';">SHOP</a></li>
+            <li class="tab"><a href="#loginModal" class="waves-effect waves-light modal-trigger">Login</a></li>
+            <li class="tab"><a href="#inquireModal" class="waves-effect waves-light modal-trigger">Inquire</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <!-- pag mobile view -->
 <ul class="sidenav" id="mobile-demo">
