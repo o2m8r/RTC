@@ -75,9 +75,9 @@ class Admin extends CI_Controller {
 	#
 	#****************************************#
 
-	public function test(){
+	public function sales_invoice(){
 
-		$this->load->view('admin/reports/test');
+		$this->load->view('admin/reports/sales-invoice');
 
 		// Get output html
 		$html = $this->output->get_output();
@@ -95,7 +95,7 @@ class Admin extends CI_Controller {
 		$this->dompdf->render();
 
 		// Output the PDF; 0 = preview; 1 = download
-		$this->dompdf->stream('Test.pdf', array("Attachment" => 0));
+		$this->dompdf->stream('Sales Invoice.pdf', array("Attachment" => 0));
 	}
 
 }
