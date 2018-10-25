@@ -26,6 +26,8 @@ date_default_timezone_set('Asia/Singapore');
 $site = 'http://localhost/RTC/';
 $config['base_url'] = $site;
 
+// PATHS
+DEFINE('TOOLS_DIR', $site.'assets/images/tools/');
 /*
 |--------------------------------------------------------------------------
 | Index File

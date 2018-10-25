@@ -32,4 +32,26 @@ class Client extends CI_Controller {
 		// $this->load->view('common/client-footer', $data); 
 		$this->load->view('common/footer-assets'); 
 	}
+
+	// ordering
+	public function order()
+	{	
+		$data['title'] = 'Order'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/client-header', $data); 
+		$this->load->view('client/order', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
+
+	// sent orders
+	public function orders()
+	{	
+		$data['title'] = 'Orders'; 
+
+		$this->load->view('common/header-assets', $data); 
+		$this->load->view('common/client-header', $data); 
+		$this->load->view('client/orders', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
 }
