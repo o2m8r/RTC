@@ -13,7 +13,7 @@
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4">Item #<?php echo $i; ?><i class="material-icons right">more_vert</i></span>
 					<div class="input-field">
-						<i class="material-icons prefix">playlist_add</i>
+						<i class="material-icons prefix">exposure</i>
 						<input id="icon_<?php echo $i; ?>" type="text" class="validate" required>
 						<label for="icon_<?php echo $i; ?>">Qty</label>
 			        </div>
