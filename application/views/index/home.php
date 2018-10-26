@@ -14,9 +14,11 @@
 </style>
 
 <div class="container">
+  <?php if(isset($_SESSION['errors'])) echo $_SESSION['errors']; ?>
+  <?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
   <div class="row">
     <div class="col m6 s12">
-      <img class="responsive-img" src="assets/images/lab3.png" alt="">
+      <img class="responsive-img" src="<?php echo base_url(); ?>assets/images/lab3.png" alt="">
     </div>
 
     <div class="col m6 s12">
@@ -41,7 +43,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card responsive-img">
         <div class="card-image">
-          <img class="default-pic" src="assets/images/tools/funnel.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/tools/funnel.jpg">
           <span class="card-title black-text">FUNNEL</span>
         </div>
         <div class="card-content">
@@ -54,7 +56,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/tools/beaker.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/tools/beaker.jpg">
           <span class="card-title black-text">BEAKER</span>
         </div>
         <div class="card-content">
@@ -67,7 +69,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/tools/test_tube.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/tools/test_tube.jpg">
           <span class="card-title black-text">TEST TUBE</span>
         </div>
         <div class="card-content">
@@ -88,7 +90,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card responsive-img">
         <div class="card-image">
-          <img class="default-pic" src="assets/images/chemicals/acetone.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/chemicals/acetone.jpg">
           <span class="card-title black-text">ACETONE</span>
         </div>
         <div class="card-content">
@@ -101,7 +103,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/chemicals/petroleum_ether.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/chemicals/petroleum_ether.jpg">
           <span class="card-title black-text">PETROLEUM ETHER</span>
         </div>
         <div class="card-content">
@@ -114,7 +116,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/chemicals/toluene.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/chemicals/toluene.jpg">
           <span class="card-title black-text">TOULENE</span>
         </div>
         <div class="card-content">
@@ -134,7 +136,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card responsive-img">
         <div class="card-image">
-          <img class="default-pic" src="assets/images/equipment/bunsen_burner.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/equipment/bunsen_burner.jpg">
           <span class="card-title black-text">BUNSEN BURNER</span>
         </div>
         <div class="card-content">
@@ -147,7 +149,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/equipment/barometer.png">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/equipment/barometer.png">
           <span class="card-title black-text">BAROMETER</span>
         </div>
         <div class="card-content">
@@ -160,7 +162,7 @@
     <div class="col s12 m4 materialboxed cursor">
       <div class="card">
         <div class="card-image responsive-img">
-          <img class="default-pic" src="assets/images/equipment/microscope.jpg">
+          <img class="default-pic" src="<?php echo base_url(); ?>assets/images/equipment/microscope.jpg">
           <span class="card-title black-text">MICROSOPE</span>
         </div>
         <div class="card-content">
@@ -182,12 +184,12 @@
         <div class="row">
         <div class="input-field col s12 col m12">
           <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="email" class="validate" required>
+          <input id="icon_prefix" name="email" type="email" class="validate" required>
           <label for="icon_prefix">Email</label>
         </div>
         <div class="input-field col s12 col m12">
           <i class="material-icons prefix">lock</i>
-          <input id="icon_telephone" type="password" class="validate" required>
+          <input id="icon_telephone" name="password" type="password" class="validate" required>
           <label for="icon_telephone">Password</label>
         </div>
       </div>
@@ -215,33 +217,43 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">person</i>
-          <input id="full_name" type="text" class="validate" required>
+          <input id="full_name" name="full_name" type="text" class="validate" required>
           <label for="full_name">Full Name</label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">contact_mail</i>
-          <input id="email" type="email" class="validate" required>
+          <input id="email" name="email" type="email" class="validate" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">business</i>
-          <input id="institution" type="text" class="validate" required>
+          <input id="institution" name="institution" type="text" class="validate" required>
           <label for="institution">Institution</label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">add_location</i>
-          <input id="institution_address" type="text" class="validate" required>
+          <input id="institution_address" name="institution_address" type="text" class="validate" required>
           <label for="institution_address">Institution Address</label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">perm_device_information</i>
-          <input id="mobile" type="text" class="validate">
+          <input id="mobile" name="mobile" type="text" class="validate">
           <label for="mobile">Mobile</label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">call</i>
-          <input id="landline" type="text" class="validate">
+          <input id="landline" name="landline" type="text" class="validate">
           <label for="landline">Landline</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">lock</i>
+          <input id="password" name="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">lock</i>
+          <input id="confirm_password" name="confirm_password" type="password" class="validate">
+          <label for="confirm_password">Confirm Password</label>
         </div>
       </div>
     </div>

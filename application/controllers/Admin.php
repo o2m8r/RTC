@@ -87,8 +87,14 @@ class Admin extends CI_Controller {
 	#****************************************#
 
 	public function sales_invoice(){
+<<<<<<< HEAD
 
 		$this->load->view('admin/reports/sales_invoice');
+=======
+
+
+		$this->load->view('admin/reports/sales-invoice');
+>>>>>>> d8447d3854f9a35a5eec66aeee81297c5b0c0e61
 
 		// Get output html
 		$html = $this->output->get_output();

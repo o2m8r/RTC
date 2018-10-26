@@ -10,9 +10,18 @@ class Client extends CI_Controller {
 		#$this->load->model('admin/m_admin_side_nav');
 	}
 
+	// check if client is legit
+	public function client_check(){
+		if($this->session->userdata('logged_in') != TRUE){
+			$this->session->set_flashdata('errors',"You must login first!");
+            redirect('home/index');
+        }
+	}
+
 
 	public function index() // controller method
 	{	
+		$this->client_check();
 		$data['title'] = 'Dashboard'; // <title> ng page
 
 		// $this->load->view('common/header-assets', $data); // included files
@@ -24,6 +33,7 @@ class Client extends CI_Controller {
 
 	public function profile()
 	{	
+		$this->client_check();
 		$data['title'] = 'Profile'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -36,6 +46,8 @@ class Client extends CI_Controller {
 	// ordering
 	public function order()
 	{	
+		$this->client_check();
+		$this->load->model('client/m_order');
 		$data['title'] = 'Order'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -47,11 +59,21 @@ class Client extends CI_Controller {
 	// sent orders
 	public function ordered()
 	{	
+		$this->client_check();
+
 		$data['title'] = 'Ordered'; 
 
 		$this->load->view('common/header-assets', $data); 
 		$this->load->view('common/client-header', $data); 
 		$this->load->view('client/ordered', $data); 
 		$this->load->view('common/footer-assets'); 
+	}
+
+	#*** LOGOUT ***#
+	public function logout(){
+		session_destroy();
+		session_start();
+		$this->session->set_flashdata('errors',"Logged out successful!");
+		redirect('home/index');
 	}
 }
