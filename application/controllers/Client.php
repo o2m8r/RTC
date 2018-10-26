@@ -60,7 +60,7 @@ class Client extends CI_Controller {
 	public function ordered()
 	{	
 		$this->client_check();
-
+		$this->load->model('client/m_ordered');
 		$data['title'] = 'Ordered'; 
 
 		$this->load->view('common/header-assets', $data); 

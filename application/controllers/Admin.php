@@ -39,6 +39,7 @@ class Admin extends CI_Controller {
 
 	public function orders()
 	{	
+		$this->load->model('admin/m_orders');
 		$data['title'] = 'Orders'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -78,6 +79,14 @@ class Admin extends CI_Controller {
 		$this->load->view('common/footer-assets'); 
 	}
 
+
+	public function qoute(){
+		$this->load->model('admin/m_qoute');
+
+		$this->load->view('admin/qoute');
+
+	}
+
 	#****************************************#
 	#
 	#
@@ -87,7 +96,7 @@ class Admin extends CI_Controller {
 	#****************************************#
 
 	public function sales_invoice(){
-
+		
 		$this->load->view('admin/reports/sales-invoice');
 
 		// Get output html

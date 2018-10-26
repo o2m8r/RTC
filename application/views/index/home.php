@@ -15,7 +15,7 @@
 
 <div class="container">
   <?php if(isset($_SESSION['errors'])) echo $_SESSION['errors']; ?>
-  <?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+  <?php if(isset($_SESSION['msg'])) echo '<script>'.$_SESSION['msg'].'</script>'; ?>
   <div class="row">
     <div class="col m6 s12">
       <img class="responsive-img" src="<?php echo base_url(); ?>assets/images/lab3.png" alt="">
