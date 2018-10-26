@@ -20,5 +20,59 @@
 		<small><b>ROBERTO T. CASUAY - Prop</b></small><br>
 		<small>VAT Reg. TIN: 110-437-665-000</small><br>
 	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="col-lg-3" style="position: absolute; float: left;">
+				<h4>In payment of the following</h4>
+				<table class="table table-striped" style="position: relative;">
+				  <thead>
+				    <tr>
+				      <th scope="col">Invoice</th>
+				      <th scope="col">Amount</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row"></th>
+				      <td></td>
+
+				    </tr>
+				    <tr>
+				      <th scope="row"></th>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"></th>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"></th>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"></th>
+				      <td></td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+			<div class="col-lg-9" style="position: relative; text-align: left;">
+				<h4>Collection Receipt</h4>
+				<hr>
+				<p>RECEIVED FROM _________________________________________________</p>
+				<p>TIN______________________________________________________________</p>
+				<p>ADRESS _________________________________________________________</p>
+				<p>_________________________________________________________________</p>
+				<p>The sum of _______________________________________________________</p>
+				<p>(Php _____________) in full/partial payment if account specified herein.</p>
+
+				<div style="text-align: right;">
+					<p>By: ______________________________</p>
+					<p> Authorized Signature</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
