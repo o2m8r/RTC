@@ -45,13 +45,13 @@ class Client extends CI_Controller {
 	}
 
 	// sent orders
-	public function orders()
+	public function ordered()
 	{	
-		$data['title'] = 'Orders'; 
+		$data['title'] = 'Ordered'; 
 
 		$this->load->view('common/header-assets', $data); 
 		$this->load->view('common/client-header', $data); 
-		$this->load->view('client/orders', $data); 
+		$this->load->view('client/ordered', $data); 
 		$this->load->view('common/footer-assets'); 
 	}
 }
