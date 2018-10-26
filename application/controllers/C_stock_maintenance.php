@@ -64,4 +64,27 @@ class C_stock_maintenance extends CI_Controller {
 		}
 	}
 
+    public function update(){
+        $this->form_validation->set_rules('item_name', 'Item Name', 'trim|required');
+        $this->form_validation->set_rules('type', 'Type', 'trim|required');
+        $this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim|required');
+        $this->form_validation->set_rules('specification', 'Specification', 'trim|required');
+
+        if($this->form_validation->run() === FALSE){
+            $this->session->set_flashdata('errors', validation_errors());
+            redirect('admin/stock-maintenance');
+        }else{
+            $name = $this->m_stock_maintenance->update_stock();
+            $this->session->set_flashdata("msg", "M.toast({html: '\'".$name."\' successfully added!', classes: 'rounded'});");
+            redirect('admin/stock-maintenance');
+        }
+    }
+
+    public function delete(){
+        $name = $this->m_stock_maintenance->delete_stock();
+        $this->session->set_flashdata("msg", "M.toast({html: '\'".$name."\' successfully added!', classes: 'rounded'});");
+        redirect('admin/stock-maintenance');
+    }
+
 }

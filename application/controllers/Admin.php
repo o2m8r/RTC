@@ -87,14 +87,8 @@ class Admin extends CI_Controller {
 	#****************************************#
 
 	public function sales_invoice(){
-<<<<<<< HEAD
-
-		$this->load->view('admin/reports/sales_invoice');
-=======
-
 
 		$this->load->view('admin/reports/sales-invoice');
->>>>>>> d8447d3854f9a35a5eec66aeee81297c5b0c0e61
 
 		// Get output html
 		$html = $this->output->get_output();
@@ -113,6 +107,29 @@ class Admin extends CI_Controller {
 
 		// Output the PDF; 0 = preview; 1 = download
 		$this->dompdf->stream('Sales Invoice.pdf', array("Attachment" => 0));
+	}
+
+	public function collection_receipt(){
+
+		$this->load->view('admin/reports/collection-receipt');
+
+		// Get output html
+		$html = $this->output->get_output();
+
+		// Load pdf library
+		$this->load->library('pdf');
+
+		// Load HTML content
+		$this->dompdf->loadHtml($html);
+
+		// Setup paper size and orientation
+		$this->dompdf->setPaper('A4','landscape');
+	
+		// Render the HTML as PDF
+		$this->dompdf->render();
+
+		// Output the PDF; 0 = preview; 1 = download
+		$this->dompdf->stream('Collection Receipt.pdf', array("Attachment" => 0));
 	}
 
 }

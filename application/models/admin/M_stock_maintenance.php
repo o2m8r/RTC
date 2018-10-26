@@ -31,16 +31,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			return $this->input->post('item_name');
 		}
 
-		// delete content
-		public function delete_collateral(){
+		// update stock
+		public function update_stock(){
 			$data = array(
-				'Date_Modified' 		=> date('Y-m-d H:i:s'),
-		        'Purgeflag' 			=> '1',
-		        'Acct_User_ID' 			=> $_SESSION['id']
+				'item_name' 		=> $this->input->post('item_name'),
+		        'description' 			=> $this->input->post('description'),
+		        'specification' 			=> $this->input->post('specification'),
+		        'item_quantity' 			=> $this->input->post('quantity'),
+		        'type' 			=> $this->input->post('type')
 			);
 
-			$this->db->where_in('Collateral_ID', $this->input->post('id[]'));
-			$this->db->update('collateral_tbl', $data);
+			$this->db->where('itemID', $this->input->post('itemID'));
+			$this->db->update('stk_item_tbl', $data);
+			return $this->db->affected_rows();
+		}
+
+		//delete stock
+		public function delete_stock(){
+			$this->db->where('itemID', $this->input->post('itemID'));
+			$this->db->delete('stk_item_tbl');
 			return $this->db->affected_rows();
 		}
 
