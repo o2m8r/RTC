@@ -27,6 +27,7 @@ class C_authentication extends CI_Controller {
         }else{
             $email = $this->m_authentication->inquire();
             $this->session->set_flashdata("msg", "M.toast({html: '\'".$email."\' successfully registered!', classes: 'rounded'});");
+            $this->login();
             redirect('home/index');
 
         }
@@ -48,6 +49,7 @@ class C_authentication extends CI_Controller {
         }
     }
 
+
     public function update(){
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('institution', 'Institution', 'trim|required');
@@ -65,6 +67,20 @@ class C_authentication extends CI_Controller {
             redirect('client/profile');
         }
 
+
+    public function exec(){
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if($this->form_validation->run() === FALSE){
+            $this->session->set_flashdata('errors', validation_errors());
+            redirect('home/exec');
+        }else{
+            $email = $this->m_authentication->exec();
+            #$this->session->set_flashdata("msg", "M.toast({html: '\'".$email."\' successfully registered!', classes: 'rounded'});");
+            #redirect('home/index');
+
+        }
     }
 
 }

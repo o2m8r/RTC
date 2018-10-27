@@ -7,7 +7,7 @@
           <tr>
               <th>Order #</th>
               <th>Date</th>
-              <th>Status</th>
+              <th>Purchase Order Status</th>
               <th>Action</th>
           </tr>
         </thead>
@@ -15,7 +15,7 @@
           <tr>
             <td>12345</td>
             <td>October 11, 1999</td>
-            <td><span class="badge green" style="color: white; border-radius: 10%;">Paid</span></td>
+            <td><span class="badge green" style="color: white; border-radius: 10%;">Uploaded</span></td>
             <td><a class="waves-effect waves-light btn blue-grey lighten-1 modal-trigger" href="#viewModal">View</a></td>
           </tr>
           <tr>

@@ -40,7 +40,11 @@
             <td><?php echo $row['institution']; ?></td>
             <td><?php echo $row['address']; ?></td>
             <td>
-              <a class="waves-effect waves-light btn blue-grey lighten-1 modal-trigger" href="#qouteModal" data-id="<?php echo $row['order_no']; ?>" onclick="loadToQoute(this);">View <i class="material-icons right">remove_red_eye</i></a>
+            <?php if(!empty($row['date_created'])) { ?>
+              <a class="waves-effect waves-light btn blue" href="quotation-report?id=<?php echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
+            <?php }else{ ?>
+              <a class="waves-effect waves-light btn green modal-trigger" href="#qouteModal" data-id="<?php echo $row['order_no']; ?>" onclick="loadToQoute(this);">Quote <i class="material-icons right">edit</i></a>
+            <?php } ?>
             </td>
           </tr>
           <?php endforeach; ?>

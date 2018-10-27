@@ -8,10 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->database();
 		}
 
-		
 		public function get_ordered(){ 
 			$this->db->select('*');
-			$this->db->from('inq_order_tbl');
+			$this->db->from('inq_order_tbl IOT');
+			$this->db->order_by('date_created ASC, purchase_order DESC, order_no', NULL, FALSE);
 			$query = $this->db->get();
 			return $query->result_array();
 		}

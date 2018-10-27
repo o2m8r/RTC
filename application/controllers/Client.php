@@ -12,7 +12,7 @@ class Client extends CI_Controller {
 
 	// check if client is legit
 	public function client_check(){
-		if($this->session->userdata('logged_in') != TRUE){
+		if($this->session->userdata('logged_in') != TRUE || !isset($_SESSION['userID'])){
 			$this->session->set_flashdata('errors',"You must login first!");
             redirect('home/index');
         }
@@ -85,7 +85,7 @@ class Client extends CI_Controller {
 		$this->dompdf->loadHtml($html);
 
 		// Setup paper size and orientation
-		$this->dompdf->setPaper('A4','landscape');
+		$this->dompdf->setPaper('A4','portrait');
 	
 		// Render the HTML as PDF
 		$this->dompdf->render();

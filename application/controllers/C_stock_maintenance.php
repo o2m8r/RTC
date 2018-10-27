@@ -16,7 +16,7 @@ class C_stock_maintenance extends CI_Controller {
         list($type, $extension) = explode('/', $_FILES['item_image']['type']);
 		
 		$config['file_name']   = uniqid('', true).'.'.strtolower($extension);
-        $config['upload_path']   = 'uploads/';
+        $config['upload_path']   = TOOLS_DIR;
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size']      = 1024;
         $this->load->library('upload', $config);

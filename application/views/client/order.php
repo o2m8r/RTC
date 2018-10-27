@@ -1,6 +1,6 @@
 <div class="container">
 	<?php if(isset($_SESSION['errors'])) echo $_SESSION['errors']; ?>
-  	<?php if(isset($_SESSION['msg'])) echo $_SESSION['msg']; ?>
+  	<?php if(isset($_SESSION['msg'])) echo '<script>'.$_SESSION['msg'].'</script>'; ?>
 <!-- START SHOW PRODUCTS -->
 	<div class="row">
 		<br>
