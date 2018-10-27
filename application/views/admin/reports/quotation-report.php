@@ -31,16 +31,18 @@
 
 	<br><br><br><br><br>
 
-	<p><b>DELIVERY: </b> __________________________</p>
-	<p><b>TERMS: </b> ____________________________</p>
-	<p><b>PRICE VALIDITY: </b> __________________________</p>.
+	<?php foreach($this->m_qoutation_report->get_qoutation($_GET['id']) as $row): ?>
+	<p><b>DELIVERY: </b> __________<?php echo $row['delivery']; ?>________________</p>
+	<p><b>TERMS: </b> _____________<?php echo $row['terms']; ?>_______________</p>
+	<p><b>PRICE VALIDITY: </b> ___________<?php echo $row['price_validity']; ?>_______________</p>.
 	<p>Thank you for giving us opportunity to quote. We hope to get your valued irder soon. For any queries about this quotation, feel free to call us</p>
 
 
 
 	<br><br>
 	<br>
-	___________________________ <br>
+	____________<?php echo $row['adminID']; ?>_______________ <br>
 	<p>Sales/Marketing Manager</p>
+	<?php endforeach;?>
 </body>
 </html>

@@ -69,6 +69,32 @@ class Client extends CI_Controller {
 		$this->load->view('common/footer-assets'); 
 	}
 
+
+	public function quotation_report(){
+
+		$this->load->model('admin/m_qoutation_report');
+		$this->load->view('admin/reports/quotation-report');
+
+		// Get output html
+		$html = $this->output->get_output();
+
+		// Load pdf library
+		$this->load->library('pdf');
+
+		// Load HTML content
+		$this->dompdf->loadHtml($html);
+
+		// Setup paper size and orientation
+		$this->dompdf->setPaper('A4','landscape');
+	
+		// Render the HTML as PDF
+		$this->dompdf->render();
+
+		// Output the PDF; 0 = preview; 1 = download
+		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 0));
+	}
+
+
 	#*** LOGOUT ***#
 	public function logout(){
 		session_destroy();

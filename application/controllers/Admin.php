@@ -143,6 +143,8 @@ class Admin extends CI_Controller {
 
 	public function quotation_report(){
 
+		$this->load->model('admin/m_qoutation_report');
+
 		$this->load->view('admin/reports/quotation-report');
 
 		// Get output html

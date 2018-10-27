@@ -17,7 +17,7 @@
             <?php if(!empty($row['date_created'])): ?>
             <td><span class="badge green" style="color: white; border-radius: 10%;">Quoted</span></td>
             <td>
-              <button class="waves-effect waves-light btn blue-grey lighten-1 modal-trigger" href="#">Print <i class="material-icons right">local_printshop</i></button>
+              <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php echo $row['order_no']; ?>">Print <i class="material-icons right">local_printshop</i></a>
               <button class="waves-effect waves-light btn blue darken-1 modal-trigger" href="#viewModal">Upload <i class="material-icons right">file_upload</i></button>
             </td>
             <?php else: ?>
