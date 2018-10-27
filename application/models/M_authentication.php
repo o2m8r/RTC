@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			return $this->input->post('full_name');
 		}
 
+		// client login function
 		public function login(){
 
 			//Get all inputs
@@ -70,6 +71,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				// $this->load->view('index/exec', $data);
 				// $this->load->view('common/lp-footer');
 				redirect('home/index');
+			}
+
+		}
+
+		// admin login function
+		public function exec(){
+
+			//Get all inputs
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
+
+			$this->db->select("*");
+			$this->db->from("admin_tbl");
+			$this->db->where("email", $email);
+			$query = $this->db->get();
+			$row = $query->row_array();
+
+			if($query->num_rows() == 1){
+				if($email == $row['email'] && $password == $row['password']){
+
+					$newdata = array(
+						'adminID'  			=> $row['adminID'],
+				        'admin_name'  		=> $row['admin_name'],
+				        'position'  		=> $row['position'],
+				        'specimen'  		=> $row['specimen'],
+				        'image'  			=> $row['image'],
+				        'email'				=> $row['email'],
+				        'logged_in' 		=> TRUE
+					);
+
+
+					$this->session->set_userdata($newdata);
+					#$this->session->set_flashdata('msg', '<script> window.onload = function(){new PNotify({title: "Success !", text: "Welcome back '.$row['Firstname'].'!", type: "success", nonblock: {nonblock: true }});}</script>');
+					redirect('admin/orders');
+
+				}else{
+					$this->session->set_flashdata('errors',"<li>Email/Password is incorrect.</li>");
+					// $this->load->view('common/lp-assets', $data);
+					// $this->load->view('index/exec', $data);
+					// $this->load->view('common/lp-footer');
+					redirect('home/exec');
+				}
+				
+			}else{
+				$this->session->set_flashdata('errors',"<li>Email/Password is incorrect.</li>");
+				// $this->load->view('common/lp-assets', $data);
+				// $this->load->view('index/exec', $data);
+				// $this->load->view('common/lp-footer');
+				redirect('home/exec');
 			}
 
 		}

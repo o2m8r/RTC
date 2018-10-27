@@ -8,11 +8,40 @@ class Admin extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		#$this->load->model('admin/m_admin_side_nav');
+
+		####################
+		#
+		#	START EMAIL
+		#
+		####################
+		// set data  
+		// $l_id 					= $this->input->post('loan_id');
+		// $first_payment_sched 	= $this->input->post('scheduleFirstPayment');
+		// $remarks 				= $this->input->post('remarks');
+		// $email 					= $this->input->post('email_address');
+		// $subject 				= "[MAFLC] Payment Recieved";
+		// $message 				= "Your payment has been posted visit the link to download your Official Receipt ".base_url()."borrower/reports-official-receipt?lp_id=".$lpt_id."&l_id=".$l_id." . Thank you :)";
+
+		// $this->m_send_notification->send_email($email, $subject, $message);
+		####################
+		#
+		#	END EMAIL
+		#
+		####################
+	}
+
+	// check if admin is legit
+	public function admin_check(){
+		if($this->session->userdata('logged_in') != TRUE || !isset($_SESSION['adminID'])){
+			$this->session->set_flashdata('errors',"You must login first!");
+            redirect('home/exec');
+        }
 	}
 
 
 	public function index() // controller method
 	{	
+		$this->admin_check();
 		$data['title'] = 'Dashboard'; // <title> ng page
 
 		// $this->load->view('common/header-assets', $data); // included files
@@ -24,6 +53,7 @@ class Admin extends CI_Controller {
 
 	public function profile()
 	{	
+		$this->admin_check();
 		$data['title'] = 'Profile'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -39,6 +69,8 @@ class Admin extends CI_Controller {
 
 	public function orders()
 	{	
+		$this->admin_check();
+
 		$this->load->model('admin/m_orders');
 		$data['title'] = 'Orders'; 
 
@@ -50,6 +82,8 @@ class Admin extends CI_Controller {
 
 	public function qoutations()
 	{	
+		$this->admin_check();
+
 		$data['title'] = 'Qoutations'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -60,6 +94,8 @@ class Admin extends CI_Controller {
 
 	public function collections()
 	{	
+		$this->admin_check();
+
 		$data['title'] = 'Collections'; 
 
 		$this->load->view('common/header-assets', $data); 
@@ -70,6 +106,8 @@ class Admin extends CI_Controller {
 
 	public function stock_maintenance()
 	{	
+		$this->admin_check();
+
 		$this->load->model('admin/m_stock_maintenance');
 		$data['title'] = 'Stocks Maintenance'; 
 
@@ -81,10 +119,20 @@ class Admin extends CI_Controller {
 
 
 	public function qoute(){
+		$this->admin_check();
+
 		$this->load->model('admin/m_qoute');
 
 		$this->load->view('admin/qoute');
 
+	}
+
+	#*** LOGOUT ***#
+	public function logout(){
+		session_destroy();
+		session_start();
+		$this->session->set_flashdata('errors',"Logged out successful!");
+		redirect('home/exec');
 	}
 
 	#****************************************#
@@ -119,6 +167,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function collection_receipt(){
+
+		$this->load->model('admin/m_invoice_collection');
 
 		$this->load->view('admin/reports/collection-receipt');
 

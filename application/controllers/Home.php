@@ -21,4 +21,15 @@ class Home extends CI_Controller {
 		$this->load->view('common/lp-footer', $data); // include footer
 		$this->load->view('common/footer-assets'); // included files
 	}
+
+	public function exec(){
+		
+		$data['title'] = 'Exec'; 
+
+		$this->load->view('common/header-assets', $data); 
+		// $this->load->view('common/lp-header', $data); 
+		$this->load->view('index/exec', $data);	
+		// $this->load->view('common/lp-footer', $data); 
+		$this->load->view('common/footer-assets'); 
+	}
 }
