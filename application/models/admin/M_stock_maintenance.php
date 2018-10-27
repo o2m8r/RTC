@@ -35,10 +35,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function update_stock(){
 			$data = array(
 				'item_name' 		=> $this->input->post('item_name'),
-		        'description' 			=> $this->input->post('description'),
-		        'specification' 			=> $this->input->post('specification'),
-		        'item_quantity' 			=> $this->input->post('quantity'),
-		        'type' 			=> $this->input->post('type')
+		        'description' 		=> $this->input->post('description'),
+		        'specification' 	=> $this->input->post('specification'),
+		        'item_quantity' 	=> $this->input->post('quantity'),
+		        'type' 				=> $this->input->post('type')
 			);
 
 			$this->db->where('itemID', $this->input->post('itemID'));

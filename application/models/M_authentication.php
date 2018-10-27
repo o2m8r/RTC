@@ -74,4 +74,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 
+		public function update_profile() {
+			$data = array(
+				'users_name'		=> $this->input->post('name'),
+				'institution'		=> $this->input->post('institution'),
+				'address'			=> $this->input->post('address'),
+				'mobile_number'		=> $this->input->post('mobile_number'),
+				'telephone_number'	=> $this->input->post('landline'),
+				'email'				=> $this->input->post('email')
+			);
+
+			$this->db->where('userID', $this->input->post('userID'));
+			$this->db->update('acc_user_tbl', $data);
+			return $this->db->affected_rows();
+		}
+
 	}

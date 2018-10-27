@@ -10,8 +10,13 @@
     small{
     	margin: 0;
     	padding: 0;
-    }
+    }		
 
+    .table>thead>tr>th{
+    	background: #0080ff;
+    	color: white;
+
+    }
     </style>
 
 </head>
@@ -33,13 +38,39 @@
 		</div>
 		<div class="col-lg-2">
 			<div style="position: absolute; float: right;">
-				<small>Laboratory Chemicals</small> <br>
+				<small>
+					<strong>
+						Laboratory Chemicals
+					</strong>
+				</small><br>
 				<small>Glassware</small> <br>
 				<small>Equipment</small> <br><br>
 				<h4><b>No: 5675</b></h4>
-				<small>DATE: _______________</small> <br>
-				<small>TERMS:_______________</small> <br>
-				<small>P.O. NO: _______________</small> <br>
+				<small>
+					<strong>
+						DATE:
+					</strong>
+					<u>
+						INSERT DATE HERE
+					</u>
+				</small><br>
+				<small>
+					<strong>
+						TERMS:
+					</strong>
+					<u>
+						INSERT TERMS HERE
+					</u>
+				</small>
+				<br>
+				<small>
+					<strong>
+						P.O. NO:
+					</strong>
+					<u>
+						PO HERE
+					</u>
+				</small> <br>
 			</div>
 		</div>
 	</div>
@@ -47,13 +78,39 @@
 	<h4>Sales Invoice</h4>
 	<div class="row">
 		<div class="col-lg-12" style="position: relative; float: left; border: 1px black solid;">
-			<small>SOLD TO: _______________________________________________________________________________________________________________________________</small><br>
-			<small>ADDRESS: ______________________________________________________________________________________________________________________________</small><br>
-			<small>BUSINESS STYLE: ________________________________________________________________________________________________________________________</small><br>
+			<small>
+				<strong>
+					SOLD TO:
+				</strong>
+				<u>
+					INSERT SOME NAME HERE
+				</u>
+			</small>
+			<br>
+
+			<small>
+				<strong>
+					ADDRESS:
+				</strong>
+				<u>
+					INSERT ADDRESS HERE
+				</u>
+			</small>
+			<br>
+
+			<small>
+				<strong>
+					BUSINESS STYLE:
+				</strong>
+				<u>
+					INSERT BUSINESS <HEADER></HEADER>
+				</u>
+			</small>
+			<br>
 		</div>
 	</div>
 	<br><br><br><br>
-	<table class="table table-striped" style="position: relative;">
+	<table class="table table-striped table-bordered" style="position: relative;">
 	  <thead>
 	    <tr>
 	      <th scope="col">Qty</th>

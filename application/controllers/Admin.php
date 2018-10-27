@@ -118,9 +118,32 @@ class Admin extends CI_Controller {
 		$this->dompdf->stream('Sales Invoice.pdf', array("Attachment" => 0));
 	}
 
-	public function collection_receipt(){
+	// public function collection_receipt(){
 
-		$this->load->view('admin/reports/collection-receipt');
+	// 	$this->load->view('admin/reports/collection-receipt');
+
+	// 	// Get output html
+	// 	$html = $this->output->get_output();
+
+	// 	// Load pdf library
+	// 	$this->load->library('pdf');
+
+	// 	// Load HTML content
+	// 	$this->dompdf->loadHtml($html);
+
+	// 	// Setup paper size and orientation
+	// 	$this->dompdf->setPaper('A4','landscape');
+	
+	// 	// Render the HTML as PDF
+	// 	$this->dompdf->render();
+
+	// 	// Output the PDF; 0 = preview; 1 = download
+	// 	$this->dompdf->stream('Collection Receipt.pdf', array("Attachment" => 0));
+	// }
+
+	public function receipt_collection(){
+
+		$this->load->view('admin/reports/quotation-report');
 
 		// Get output html
 		$html = $this->output->get_output();
@@ -138,8 +161,9 @@ class Admin extends CI_Controller {
 		$this->dompdf->render();
 
 		// Output the PDF; 0 = preview; 1 = download
-		$this->dompdf->stream('Collection Receipt.pdf', array("Attachment" => 0));
+		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 0));
 	}
+
 
 	public function quotation_report(){
 

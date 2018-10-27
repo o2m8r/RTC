@@ -48,4 +48,23 @@ class C_authentication extends CI_Controller {
         }
     }
 
+    public function update(){
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+        $this->form_validation->set_rules('institution', 'Institution', 'trim|required');
+        $this->form_validation->set_rules('address', 'address', 'trim|required');
+        $this->form_validation->set_rules('mobile_number', 'Mobile Number', 'trim|required');
+        $this->form_validation->set_rules('landline', 'Landline', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+
+        if($this->form_validation->run() === FALSE){
+            $this->session->set_flashdata('errors', validation_errors());
+            redirect('client/profile');
+        }else{
+            $name = $this->m_authentication->update_profile();
+            $this->session->set_flashdata("msg", "M.toast({html: '\'".$name."\' successfully added!', classes: 'rounded'});");
+            redirect('client/profile');
+        }
+
+    }
+
 }
