@@ -9,9 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		
-		public function get_stocks(){ 
+		public function get_stocks($q = ''){ 
 			$this->db->select('*');
 			$this->db->from('stk_item_tbl');
+			if(!empty($q)){
+				$this->db->where('item_name LIKE \''.$q.'%\'');
+			}
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -38,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			for($i = 0; $i < count($qty); $i++){
 				array_push($ITEM, array(	'itemID' 			=> $stock_id[$i],
 											'order_no'			=> $inq_id, 
-											'inq_quantity'		=> $qty[$i])
+											'inq_quantity'		=> str_replace(' units', '', $qty[$i]))
 											//'total' ??
 				);
 			}

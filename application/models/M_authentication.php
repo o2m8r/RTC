@@ -89,7 +89,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->db->where('userID', $this->input->post('userID'));
 			$this->db->update('acc_user_tbl', $data);
 			return $this->db->affected_rows();
-
+		}
+		
 		// admin login function
 		public function exec(){
 

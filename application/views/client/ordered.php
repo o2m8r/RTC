@@ -81,10 +81,10 @@
           <td>October 27, 2018</td>
           <td>20, 000.00</td>
           <td>
-            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
+            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php #echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
           </td>
           <td>
-            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
+            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php #echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
           </td>
         </tr>
       </tbody>

@@ -25,6 +25,10 @@
 
   <!-- CSS3 ANIMATE CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css3-animate-it-master/css/animations.css">
+
+  <!-- input mask -->
+  <script src="<?php echo base_url(); ?>assets/input_mask/jquery.inputmask.bundle.min.js"></script>
+
 </head>
 
 <body>

@@ -66,6 +66,7 @@ class C_authentication extends CI_Controller {
             $this->session->set_flashdata("msg", "M.toast({html: '\'".$name."\' successfully added!', classes: 'rounded'});");
             redirect('client/profile');
         }
+    }
 
 
     public function exec(){
