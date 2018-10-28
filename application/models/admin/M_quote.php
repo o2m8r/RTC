@@ -1,13 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class M_qoute extends CI_Model{
+	class M_quote extends CI_Model{
 		
 
 		public function __construct(){
 			$this->load->database();
 		}
 
+		public function format_amount($amount){
+			$amount = str_replace('₱', '', $amount);
+			$amount = str_replace(',', '', $amount);
+			$amount = str_replace(' ', '', $amount);
+			return $amount;
+		}
 		
 		public function get_items($order_no){ 
 			$this->db->select('*');
@@ -22,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		// update content
 		public function update_order_tbl(){
 			$data = array(
-				'adminID'			=> '1', // admin ID
+				'adminID'			=> $_SESSION['adminID'], // admin ID
 				'date_created' 		=> date('Y-m-d H:i:s'),
 				'delivery'			=> $this->input->post('delivery'),
 				'terms'				=> $this->input->post('terms'),
@@ -43,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$inq_qty 	= $this->input->post('inq_qty[]');
 
 			for($i = 0; $i < count($item_id); $i++){
-				$total = $inq_qty[$i] * $qoutation[$i];
+				$total = $inq_qty[$i] * format_amount($qoutation[$i]);
 
 				$data = array(
 					'total'			=> $total,
-					'quotation' 	=> $qoutation[$i]
+					'quotation' 	=> format_amount($qoutation[$i])
 				);
 
 				$this->db->where('inq_itemID', $item_id[$i]);

@@ -10,7 +10,7 @@
 		});
 		
   		window.onload = function(){
-  			document.getElementById('<?php echo strtolower($title); ?>').className = 'active';
+  			document.getElementById('<?php echo str_replace(' ', '-', strtolower($title)); ?>').className = 'active';
   		}
   	</script>
 </body>

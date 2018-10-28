@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_qoute extends CI_Controller {
+class C_quote extends CI_Controller {
 
 
 	// auto-load m_admin_side_nav model
@@ -11,7 +11,7 @@ class C_qoute extends CI_Controller {
 	}
 
 
-    public function qoute(){
+    public function quote(){
 
         $this->form_validation->set_rules('stock_id[]', 'Stock ID', 'trim|required');
         $this->form_validation->set_rules('qty[]', 'Quantity', 'trim|required');

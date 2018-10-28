@@ -109,7 +109,7 @@ class Admin extends CI_Controller {
 		$this->admin_check();
 
 		$this->load->model('admin/m_stock_maintenance');
-		$data['title'] = 'Stocks Maintenance'; 
+		$data['title'] = 'Stock Maintenance'; 
 
 		$this->load->view('common/header-assets', $data); 
 		$this->load->view('common/admin-header', $data); 
@@ -118,12 +118,12 @@ class Admin extends CI_Controller {
 	}
 
 
-	public function qoute(){
+	public function quote(){
 		$this->admin_check();
 
-		$this->load->model('admin/m_qoute');
+		$this->load->model('admin/m_quote');
 
-		$this->load->view('admin/qoute');
+		$this->load->view('admin/quote');
 
 	}
 
