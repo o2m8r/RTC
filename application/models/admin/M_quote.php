@@ -49,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$inq_qty 	= $this->input->post('inq_qty[]');
 
 			for($i = 0; $i < count($item_id); $i++){
-				$total = $inq_qty[$i] * format_amount($qoutation[$i]);
+				$total = $inq_qty[$i] * $this->format_amount($qoutation[$i]);
 
 				$data = array(
 					'total'			=> $total,
-					'quotation' 	=> format_amount($qoutation[$i])
+					'quotation' 	=> $this->format_amount($qoutation[$i])
 				);
 
 				$this->db->where('inq_itemID', $item_id[$i]);
