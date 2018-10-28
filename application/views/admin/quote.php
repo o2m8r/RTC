@@ -3,7 +3,7 @@
 
 	<div class="input-field col s4">
       <i class="material-icons prefix">subway</i>
-      <input id="delivery" name="delivery" type="date" class="validate" onclick="check_date(this);" required>
+      <input id="delivery" name="delivery" type="date" class="validate" required>
       <label for="delivery">Delivery</label>
     </div>
     <div class="input-field col s4">
@@ -34,7 +34,7 @@
 	        <div class="card-content">
 	          <div class="input-field">
 					<i class="material-icons prefix">attach_money</i>
-					<input id="icon_<?php echo $row['itemID']; ?>" class="currency" name="qoutation[]" type="text" class="validate" required>
+					<input id="icon_<?php echo $row['itemID']; ?>" class="currency" data-name="<?php echo $row['item_name']; ?>" name="qoutation[]" type="text" class="validate" required>
 					<label for="icon_<?php echo $row['itemID']; ?>">Quotation</label>
 		        </div>
 	        </div>

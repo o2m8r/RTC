@@ -235,7 +235,7 @@ class Admin extends CI_Controller {
 		$this->dompdf->loadHtml($html);
 
 		// Setup paper size and orientation
-		$this->dompdf->setPaper('A4','landscape');
+		$this->dompdf->setPaper('A4','portrait');
 	
 		// Render the HTML as PDF
 		$this->dompdf->render();

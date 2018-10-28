@@ -18,7 +18,11 @@
     </style>
 </head>
 <body>
-
+<?php
+	function format_date($date){
+		return date('F d, Y', strtotime($date));
+	}
+?>
 	<div style="text-align: center; position: relative;">
 		<h1>RTC LABORATORY SERVICES</h1>
 		<h1>AND SUPPLY HOUSE</h1>
@@ -31,7 +35,7 @@
 	<hr>
 
 	<?php foreach($this->m_qoutation_report->get_qoutation_heading($_GET['id']) as $row): ?>
-	<p><b>DATE: </b> <u><?php echo $row['date_created']; ?></u></p>
+	<p><b>DATE: </b> <u><?php echo format_date($row['date_created']); ?></u></p>
 	<p><b>TO: </b> <u><?php echo $row['institution'].', '.$row['address']; ?></u></p>
 	<p><b>ATTN: </b> <u><?php echo $row['users_name']; ?></u></p>
 	<p><b>DEAR: Maam/Sir,</p>
@@ -68,9 +72,9 @@
 	<br><br>
 
 	<?php foreach($this->m_qoutation_report->get_qoutation_footer($_GET['id']) as $row): ?>
-	<p><b>DELIVERY: </b> <u><?php echo $row['delivery']; ?></u> </p>
+	<p><b>DELIVERY: </b> <u><?php echo format_date($row['delivery']); ?></u> </p>
 	<p><b>TERMS: </b> <u><?php echo $row['terms']; ?></u></p>
-	<p><b>PRICE VALIDITY: </b> <u><?php echo $row['price_validity']; ?></u> </p>.
+	<p><b>PRICE VALIDITY: </b> <u><?php echo format_date($row['price_validity']); ?></u> </p>.
 	<p>Thank you for giving us opportunity to quote. We hope to get your valued irder soon. For any queries about this quotation, feel free to call us</p>
 
 
