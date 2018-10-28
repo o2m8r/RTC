@@ -140,4 +140,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 
+		public function update_profile_admin(){
+			$data = array(
+				'admin_name'		=> $this->input->post('name'),
+				'position'			=> $this->input->post('Position'),
+				'email'				=> $this->input->post('email'),
+				'specimen'			=> $this->input->post('specimen')
+			);
+
+			$this->db->where('adminID', $this->input->post('adminID'));
+			$this->db->update('adminID', $data);
+			return $this->db->affected_rows();
+		}
+
 	}
