@@ -87,7 +87,7 @@ class C_authentication extends CI_Controller {
     public function update_admin(){
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('position', 'Position', 'trim|required');
-        $this->form_validation->set_rules('specimen', 'Specimen', 'trim|required');
+        $this->form_validation->set_rules('specimen', 'Specimen', 'trim');
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
 
         if($this->form_validation->run() === FALSE){

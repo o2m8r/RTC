@@ -21,7 +21,7 @@
 			          <input value="<?php echo $_SESSION['position'] ?>" name="position" type="text" class="validate">
 			          <label>Position</label>
 			        </div>
-			        <div class="row">
+			        <div class="row hide">
 				        <div class="input-field col s12">
 				          <input value="<?php echo $_SESSION['specimen'] ?>" name="specimen" type="text" class="validate">
 				          <label>Specimen</label>
