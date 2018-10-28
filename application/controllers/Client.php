@@ -69,6 +69,14 @@ class Client extends CI_Controller {
 		$this->load->view('common/footer-assets'); 
 	}
 
+	public function delivered_quotations(){
+		$this->client_check();
+
+		$this->load->model('client/m_delivered_quotations');
+
+		$this->load->view('client/delivered-quotations');
+
+	}
 
 	public function quotation_report(){
 
@@ -94,7 +102,63 @@ class Client extends CI_Controller {
 		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 0));
 	}
 
+	public function collection_receipt(){
 
+		$this->load->model('admin/m_invoice_collection');
+
+		$this->load->view('admin/reports/collection-receipt');
+
+		// insert inv
+		// $sales_id = $this->m_invoice_collection->insert_sales_tbl();
+		// $this->m_invoice_collection->insert_collection_tbl($sales_id);
+
+
+		// Get output html
+		$html = $this->output->get_output();
+
+		// Load pdf library
+		$this->load->library('pdf');
+
+		// Load HTML content
+		$this->dompdf->loadHtml($html);
+
+		// Setup paper size and orientation
+		$this->dompdf->setPaper('A4','landscape');
+	
+		// Render the HTML as PDF
+		$this->dompdf->render();
+
+		// Output the PDF; 0 = preview; 1 = download
+		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 1));
+
+		redirect('admin/collections');
+	}
+
+	public function sales_invoice(){
+		
+		$this->load->model('admin/m_collections');
+
+		$this->load->view('admin/reports/sales-invoice');
+
+		// Get output html
+		$html = $this->output->get_output();
+
+		// Load pdf library
+		$this->load->library('pdf');
+
+		// Load HTML content
+		$this->dompdf->loadHtml($html);
+
+		// Setup paper size and orientation
+		$this->dompdf->setPaper('A4','portrait');
+	
+		// Render the HTML as PDF
+		$this->dompdf->render();
+
+		// Output the PDF; 0 = preview; 1 = download
+		$this->dompdf->stream('Sales Invoice.pdf', array("Attachment" => 0));
+	}
+	
 	#*** LOGOUT ***#
 	public function logout(){
 		session_destroy();

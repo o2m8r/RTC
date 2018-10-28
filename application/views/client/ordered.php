@@ -1,3 +1,6 @@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 <?php if(isset($_SESSION['errors'])) echo $_SESSION['errors']; ?>
 
 <script>
@@ -9,6 +12,34 @@
     document.getElementById('po').src = src;
   }
 </script>
+
+<script>
+  function viewQuotations(data){
+    $("#quotations_div").html('<center><div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div></center>');
+
+    var order_no = data.getAttribute('data-id');
+
+    $.ajax({
+        url: "<?php echo base_url(); ?>index.php/client/delivered-quotations",
+        dataType: 'text',
+        type: "POST",
+        data: "order_no=" + order_no,
+        success: function (result) {
+          $("#quotations_div").html(result);
+        },
+        error: function () {
+            M.toast({html: 'Error!', classes: 'rounded'});
+        }
+    });
+  }
+</script>
+
+<?php
+  function format_date($date){
+    return date('F d, Y', strtotime($date));
+  }
+?>
+
 <div class="container">
   <br>
   <ul id="tabs-swipe-demo" class="tabs">
@@ -63,7 +94,7 @@
 
   </div>
   <div id="order_history" class="col s12">
-    <table>
+    <table id="order_history_tbl" class="centered striped">
       <thead>
         <tr>
           <th>Order No.</th>
@@ -75,18 +106,20 @@
         </tr>
       </thead>
       <tbody>
+        <?php foreach($this->m_ordered->get_all_collected() as $row): ?>
         <tr>
-          <td>00001</td>
-          <td><a href="#">43 items</a></td>
-          <td>October 27, 2018</td>
-          <td>20, 000.00</td>
+          <td><?php echo sprintf('%05d', $row['order_no']); ?></td>
+          <td><a href="#viewQuotationsModal" class="modal-trigger" data-id="<?php echo $row['order_no']; ?>" onclick="viewQuotations(this);"><?php echo $row['Total_Items']; ?> items</a></td>
+          <td><?php echo format_date($row['date_receive']); ?></td>
+          <td>₱ <?php echo $row['Total_Amount']; ?></td>
           <td>
-            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php #echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
+            <a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
           </td>
           <td>
-            <a class="waves-effect waves-light btn blue-grey lighten-1" href="quotation-report?id=<?php #echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
+            <a class="waves-effect waves-light btn blue-grey lighten-1" href="collection-receipt?id=<?php echo $row['order_no']; ?>" target="_blank">Print <i class="material-icons right">local_printshop</i></a>
           </td>
         </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
@@ -126,3 +159,21 @@
     <button class="waves-effect waves-green btn red modal-close" style="width: 100%;">CLOSE</button>
   </div>
 </div>
+
+<!-- START QUOTATIONS -->
+<div id="viewQuotationsModal" class="modal modal-fixed-footer">
+  <div class="modal-content" id="quotations_div">
+    
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat red" style="width: 100%; text-align: center;">CLOSE</a>
+  </div>
+</div>
+<!-- END QUOTATIONS -->
+
+<script>
+  $(document).ready( function () {
+      $('#myTable').DataTable();
+      $('#order_history_tbl').DataTable();
+  });
+</script>

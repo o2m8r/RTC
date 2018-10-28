@@ -7,6 +7,30 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
+
+<script>
+  function viewQuotations(data){
+    $("#quotations_div").html('<center><div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div></center>');
+
+    var order_no = data.getAttribute('data-id');
+
+    $.ajax({
+        url: "<?php echo base_url(); ?>index.php/admin/delivered-quotations",
+        dataType: 'text',
+        type: "POST",
+        data: "order_no=" + order_no,
+        success: function (result) {
+          $("#quotations_div").html(result);
+        },
+        error: function () {
+            M.toast({html: 'Error!', classes: 'rounded'});
+        }
+    });
+  }
+</script>
+
+
+
 <div class="container">
 	<br>
 	<ul id="tabs-swipe-demo" class="tabs">
@@ -53,7 +77,7 @@
   </div>
   <div id="collected" class="col s12">
     
-    <table class="centered striped" id="myTable">
+    <table class="centered striped" id="collected_tbl">
       <thead>
         <tr>
             <th>Order #</th>
@@ -66,25 +90,23 @@
         </tr>
       </thead>
       <tbody>
-        <?php #foreach($this->m_ordered->get_ordered() as $row): ?>
+        <?php foreach($this->m_collections->get_all_collected() as $row): ?>
         <tr>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
-          <td>
-          	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php #echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
-	      </td>
-	      <td>
-	      	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php #echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
-	      </td>
-	      <td>
-	      	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php #echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
-	      </td>
-	      <td>
-	      	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php #echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
-	      </td>
+          <td><?php echo sprintf('%05d', $row['order_no']); ?></td>
+          <td><?php echo $row['users_name']; ?></td>
+          <td><?php echo format_date($row['date_receive']); ?></td>
+          <td><img class="materialboxed" src="<?php echo base_url().'uploads/'.$row['purchase_order']; ?>" width="50" height="50"></td>
+  	      <td>
+  	      	<a class="waves-effect waves-light btn blue modal-trigger" href="#viewQuotationsModal" data-id="<?php echo $row['order_no']; ?>" onclick="viewQuotations(this);">View <i class="material-icons right">remove_red_eye</i></a>
+  	      </td>
+  	      <td>
+  	      	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
+  	      </td>
+  	      <td>
+  	      	<a class="waves-effect waves-light btn blue-grey lighten-1" href="collection-receipt?id=<?php echo $row['order_no']; ?>" target="_blank">View <i class="material-icons right">local_printshop</i></a>
+  	      </td>
         </tr>
-        <?php #endforeach; ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
 
@@ -92,8 +114,8 @@
 </div>
 
 
-<!-- Modal Structure -->
-<?php echo form_open('admin/receipt-collection'); ?>
+<!-- START COLLECTION RECEIPT -->
+<?php echo form_open('admin/create-collection-receipt'); ?>
 <input type="hidden" name="order_no" id="order_no">
 <div id="checkInputModal" class="modal modal-fixed-footer" style="width: 80%;">
   <div class="modal-content" id="sales_invoice">
@@ -106,15 +128,29 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="waves-effect waves-green btn green" style="width: 100%;">CREATE SALES INVOICE</button>
+    <button class="waves-effect waves-green btn green modal-close" onclick="setTimeout(function(){ location.reload(); }, 3000)" style="width: 100%;">CREATE COLLECTION RECEIPT</button>
   </div>
 </div>
 <?php echo form_close(); ?>
+<!-- END COLLECTION RECEIPT -->
+
+<!-- START QUOTATIONS -->
+<div id="viewQuotationsModal" class="modal modal-fixed-footer">
+  <div class="modal-content" id="quotations_div">
+    
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat red" style="width: 100%; text-align: center;">CLOSE</a>
+  </div>
+</div>
+<!-- END QUOTATIONS -->
+
 
 <script>
   $(document).ready( function () {
 
       $('#myTable').DataTable();
+      $('#collected_tbl').DataTable();
 
       // for input masks
       $(":input").inputmask();

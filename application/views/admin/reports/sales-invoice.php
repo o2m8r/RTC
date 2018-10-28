@@ -145,8 +145,8 @@
 
 	<div style="text-align: right;">
 		<small>Received teh above articles in good order and conditions.</small> <br><br>
-		<h5>By: <?php echo $this->m_collections->get_admin($_SESSION['adminID']); ?></h5>
-		<small><?php echo strtoupper($this->m_collections->get_position($_SESSION['adminID'])); ?>/AUTHORIZED REPRESENTATIVE</small>
+		<h5>By: <?php echo $this->m_collections->get_admin($_GET['id']); ?></h5>
+		<small><?php echo strtoupper($this->m_collections->get_position($_GET['id'])); ?>/AUTHORIZED REPRESENTATIVE</small>
 
 	</div>
 </body>

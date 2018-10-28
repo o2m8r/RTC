@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->db->select('*');
 			$this->db->from('inq_order_tbl IQT');
 			$this->db->where('purchase_order IS NOT NULL', NULL, FALSE);
+			$this->db->where('IQT.order_no NOT IN(SELECT order_no FROM inv_sales_tbl)', NULL, FALSE);
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -42,17 +43,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			return $this->db->get()->row('Total_Amount');
 		}
 
-		public function get_admin($admin_id){
+		public function get_admin($order_no){
 			$this->db->select('AT.admin_name');
 			$this->db->from('admin_tbl AT');
-			$this->db->where('AT.adminID', $admin_id);
+			$this->db->join('inq_order_tbl IOT', 'IOT.adminID = AT.adminID');
+			$this->db->where('IOT.order_no', $order_no);
 			return $this->db->get()->row('admin_name');
 		}
 
-		public function get_position($admin_id){
+		public function get_position($order_no){
 			$this->db->select('AT.position');
 			$this->db->from('admin_tbl AT');
-			$this->db->where('AT.adminID', $admin_id);
+			$this->db->join('inq_order_tbl IOT', 'IOT.adminID = AT.adminID');
+			$this->db->where('IOT.order_no', $order_no);
 			return $this->db->get()->row('position');
 		}
 
@@ -69,5 +72,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->db->insert('inv_sales_tbl', $data);
 			return $this->input->post('item_name');
 		}
+
+		// collected tab
+		public function get_all_collected(){ 
+			$this->db->select('*');
+			$this->db->from('inv_sales_tbl IST');
+			$this->db->join('inq_order_tbl IOT', 'IOT.order_no = IST.order_no');
+			$this->db->join('acc_user_tbl AUT', 'AUT.userID = IOT.userID');
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
 
 	}

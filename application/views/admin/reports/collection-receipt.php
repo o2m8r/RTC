@@ -21,29 +21,31 @@
 		<small>VAT Reg. TIN: 110-437-665-000</small><br>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-4">
-			<table class="table table-striped-table-bordered">
-				<thead>
-					<tr>
-						<th colspan="2">
-							In payment of the following:
-						</th>
-					</tr>
-				</thead>
+	<div class="container">
+		<?php if(isset($_POST['check_no'])): ?>
+		<label>Date: </label><p><?php echo date('F d, Y'); ?></p>
+		<br>
+		<label>Check No. : </label> <p><?php echo $_POST['check_no']; ?></p><br>
+			<?php foreach($this->m_invoice_collection->get_collection_data($_POST['order_no']) as $row): ?>
+				<label>Amount Paid: </label> <?php echo $row['Total_Amount']; ?><br>
+				<label>Received from:</label> <?php echo $row['institution']; ?><br>
+				<label>Address:</label> <?php echo $row['address']; ?><br>
 
-				<tbody>
-					<tr>
-						<td>
-							asd
-						</td>
-						<td>
-							asd
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+				<label>Admin In-charge:</label> <?php echo $row['admin_name'].'('.$row['position'].')'; ?><br>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<?php foreach($this->m_invoice_collection->get_old_collection_data($_GET['id']) as $row): ?>
+				<label>Date: </label><p><?php echo date('F d, Y', strtotime($row['date_receive'])); ?></p>
+				<br>
+				<label>Check No. : </label> <p><?php echo $row['check_no']; ?></p><br>
+					
+				<label>Amount Paid: </label> <?php echo $row['Total_Amount']; ?><br>
+				<label>Received from:</label> <?php echo $row['institution']; ?><br>
+				<label>Address:</label> <?php echo $row['address']; ?><br>
+
+				<label>Admin In-charge:</label> <?php echo $row['admin_name'].'('.$row['position'].')'; ?><br>
+			<?php endforeach; ?>
+		<?php endif; ?>
 	</div>
 </body>
 </html>
