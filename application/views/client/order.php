@@ -150,6 +150,6 @@
 		// feature discovery
 		$('.tap-target').tapTarget('open');
 
-		$('input[name="qty[]"]').inputmask({ mask: "9[999999] unit\\s", greedy: false });
+		$('input[name="qty[]"]').inputmask({ mask: "9[999999] piece\\s", greedy: false });
 	});
 </script>

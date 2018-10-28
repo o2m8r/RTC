@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	
+	<?php foreach($this->m_collections->get_sales_invoice_top($_GET['id']) as $row): ?>
 	<div class="row">
 		<div class="col-lg-2" style="position: relative;">
 			
@@ -51,7 +51,7 @@
 						DATE:
 					</strong>
 					<u>
-						INSERT DATE HERE
+						<?php echo $row['date_created']; ?>
 					</u>
 				</small><br>
 				<small>
@@ -59,7 +59,7 @@
 						TERMS:
 					</strong>
 					<u>
-						INSERT TERMS HERE
+						<?php echo $row['terms']; ?>
 					</u>
 				</small>
 				<br>
@@ -68,7 +68,7 @@
 						P.O. NO:
 					</strong>
 					<u>
-						PO HERE
+						<?php list($name, $ext) = explode('.', $row['purchase_order']); echo $name; ?>
 					</u>
 				</small> <br>
 			</div>
@@ -83,7 +83,7 @@
 					SOLD TO:
 				</strong>
 				<u>
-					INSERT SOME NAME HERE
+					<?php echo $row['users_name']; ?>
 				</u>
 			</small>
 			<br>
@@ -93,7 +93,7 @@
 					ADDRESS:
 				</strong>
 				<u>
-					INSERT ADDRESS HERE
+					<?php echo $row['institution'].', '.$row['address']; ?>
 				</u>
 			</small>
 			<br>
@@ -103,12 +103,13 @@
 					BUSINESS STYLE:
 				</strong>
 				<u>
-					INSERT BUSINESS <HEADER></HEADER>
+					 <HEADER></HEADER>
 				</u>
 			</small>
 			<br>
 		</div>
 	</div>
+	<?php endforeach; ?>
 	<br><br><br><br>
 	<table class="table table-striped table-bordered" style="position: relative;">
 	  <thead>
@@ -121,66 +122,19 @@
 	    </tr>
 	  </thead>
 	  <tbody>
+	  	<?php foreach($this->m_collections->get_orders($_GET['id']) as $row): ?>
 	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
+	      <td><?php echo $row['inq_quantity']; ?></td>
+	      <td></td>
+	      <td><?php echo $row['item_name'].', ',$row['specification']; ?></td>
+	      <td><?php echo $row['quotation']; ?></td>
+	      <td><?php echo $row['total']; ?></td>
 	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">23</th>
-	      <td>3</td>
-	      <td>bansm,c.as</td>
-	      <td>69</td>
-	      <td>69</td>
-	    </tr>
+		<?php endforeach; ?>
 	  </tbody>
 	</table>
 
-	<h4 style="text-align: right;"><b>Total Amount Due: 1689</b></h4>
+	<h4 style="text-align: right;"><b>Total Amount Due: <?php echo $this->m_collections->get_total($_GET['id']); ?></b></h4>
 	<br><br>
 	<div style="border: 1px black solid;">
 		<center>
@@ -191,8 +145,8 @@
 
 	<div style="text-align: right;">
 		<small>Received teh above articles in good order and conditions.</small> <br><br>
-		<h5>By: __________________________</h5>
-		<small>CASHIER/AUTHORIZED REPRESENTATIVE</small>
+		<h5>By: <?php echo $this->m_collections->get_admin($_SESSION['adminID']); ?></h5>
+		<small><?php echo strtoupper($this->m_collections->get_position($_SESSION['adminID'])); ?>/AUTHORIZED REPRESENTATIVE</small>
 
 	</div>
 </body>

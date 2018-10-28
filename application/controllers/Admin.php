@@ -95,6 +95,7 @@ class Admin extends CI_Controller {
 	public function collections()
 	{	
 		$this->admin_check();
+		$this->load->model('admin/m_collections');
 
 		$data['title'] = 'Collections'; 
 
@@ -145,6 +146,8 @@ class Admin extends CI_Controller {
 
 	public function sales_invoice(){
 		
+		$this->load->model('admin/m_collections');
+
 		$this->load->view('admin/reports/sales-invoice');
 
 		// Get output html
@@ -157,7 +160,7 @@ class Admin extends CI_Controller {
 		$this->dompdf->loadHtml($html);
 
 		// Setup paper size and orientation
-		$this->dompdf->setPaper('A4','landscape');
+		$this->dompdf->setPaper('A4','portrait');
 	
 		// Render the HTML as PDF
 		$this->dompdf->render();
@@ -192,8 +195,6 @@ class Admin extends CI_Controller {
 
 	public function receipt_collection(){
 
-		$this->load->view('admin/reports/quotation-report');
-
 		$this->load->model('admin/m_invoice_collection');
 
 		$this->load->view('admin/reports/collection-receipt');
@@ -215,7 +216,7 @@ class Admin extends CI_Controller {
 		$this->dompdf->render();
 
 		// Output the PDF; 0 = preview; 1 = download
-		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 0));
+		$this->dompdf->stream('Quotation Report.pdf', array("Attachment" => 1));
 	}
 
 

@@ -4,6 +4,8 @@
     $('#order_no').val(data.getAttribute('data-order-no'));
   }  
 </script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
 <div class="container">
 	<br>
@@ -13,6 +15,12 @@
 	</ul>
 
 	<div id="pending" class="col s12">
+
+<?php
+  function format_date($date){
+    return date('F d, Y', strtotime($date));
+  }
+?>
 
     <table class="centered striped" id="myTable">
       <thead>
@@ -24,18 +32,21 @@
         </tr>
       </thead>
       <tbody>
-        <?php #foreach($this->m_ordered->get_ordered() as $row): ?>
+        <?php foreach($this->m_collections->get_pending_po() as $row): ?>
         <tr>
-          <td>asd</td>
-          <td>asd</td>
-          <td>asd</td>
+          <td><?php echo sprintf('%05d', $row['order_no']); ?></td>
+          <td><img class="materialboxed" src="<?php echo base_url().'uploads/'.$row['purchase_order']; ?>" width="50" height="50"></td>
+          <td><?php echo format_date($row['delivery']); ?></td>
           <td>
-          	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php #echo $row['order_no']; ?>" target="_blank">Invoice <i class="material-icons right">local_printshop</i></a>
-
-          	<a class="waves-effect waves-light btn blue-grey lighten-1 modal-trigger" data-order-no="2" onclick="loadToReceipt(this);" href="#checkInputModal">Receipt <i class="material-icons right">local_printshop</i></a>
+          	<a class="waves-effect waves-light btn blue-grey lighten-1" href="sales-invoice?id=<?php echo $row['order_no']; ?>" target="_blank">Invoice <i class="material-icons right">local_printshop</i></a>
+            <?php if(date('Y-m-d', strtotime($row['delivery'])) == date('Y-m-d')): ?>
+          	<a class="waves-effect waves-light btn green modal-trigger pulse" data-order-no="<?php echo $row['order_no']; ?>" onclick="loadToReceipt(this);" href="#checkInputModal">Receipt <i class="material-icons right">local_printshop</i></a>
+            <?php else: ?>
+            <button class="waves-effect waves-light btn green" disabled>Receipt <i class="material-icons right">local_printshop</i></button>
+            <?php endif; ?>
           </td>
         </tr>
-        <?php #endforeach; ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
 
@@ -82,7 +93,7 @@
 
 
 <!-- Modal Structure -->
-<?php echo form_open('admin/collection-receipt', array('target' => '_blank')); ?>
+<?php echo form_open('admin/receipt-collection'); ?>
 <input type="hidden" name="order_no" id="order_no">
 <div id="checkInputModal" class="modal modal-fixed-footer" style="width: 80%;">
   <div class="modal-content" id="sales_invoice">
@@ -99,3 +110,16 @@
   </div>
 </div>
 <?php echo form_close(); ?>
+
+<script>
+  $(document).ready( function () {
+
+      $('#myTable').DataTable();
+
+      // for input masks
+      $(":input").inputmask();
+
+      $('#check_no').inputmask({ mask: "999999" });
+
+  } );
+</script>
